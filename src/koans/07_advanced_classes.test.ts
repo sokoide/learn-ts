@@ -1,20 +1,24 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 
 /**
  * Koans: Advanced Classes
- * 
+ *
  * Abstract classes, access modifiers, and parameter properties.
  */
 
-describe('07_advanced_classes.test.ts', () => {
-  it('abstract classes and methods', () => {
+describe("07_advanced_classes.test.ts", () => {
+  it("abstract classes and methods", () => {
     abstract class Animal {
       abstract makeSound(): string;
-      move() { return "moving..."; }
+      move() {
+        return "moving...";
+      }
     }
 
     class Dog extends Animal {
-      makeSound() { return "Woof!"; }
+      makeSound() {
+        return "Woof!";
+      }
     }
 
     const dog = new Dog();
@@ -24,7 +28,7 @@ describe('07_advanced_classes.test.ts', () => {
     expect(dog.move()).toBe("");
   });
 
-  it('access modifiers: protected', () => {
+  it("access modifiers: protected", () => {
     class Person {
       constructor(protected name: string) {}
     }
@@ -41,12 +45,17 @@ describe('07_advanced_classes.test.ts', () => {
     expect(emp.getName()).toBe("");
   });
 
-  it('parameter properties shorthand', () => {
+  it("parameter properties shorthand", () => {
     class User {
       // Shorthand for field declaration + initialization
-      constructor(public name: string, private age: number) {}
-      
-      getAge() { return this.age; }
+      constructor(
+        public name: string,
+        private age: number,
+      ) {}
+
+      getAge() {
+        return this.age;
+      }
     }
 
     const user = new User("Bob", 25);
@@ -56,11 +65,13 @@ describe('07_advanced_classes.test.ts', () => {
     expect(user.getAge()).toBe(0);
   });
 
-  it('getters and setters', () => {
+  it("getters and setters", () => {
     class Account {
       private _balance: number = 0;
 
-      get balance() { return this._balance; }
+      get balance() {
+        return this._balance;
+      }
       set balance(value: number) {
         if (value >= 0) this._balance = value;
       }
@@ -71,5 +82,23 @@ describe('07_advanced_classes.test.ts', () => {
 
     // TODO: Fix the expectation
     expect(acc.balance).toBe(0);
+  });
+
+  it("Type Erasure: classes vs interfaces", () => {
+    interface IUser {
+      name: string;
+    }
+    class UserClass {
+      constructor(public name: string) {}
+    }
+
+    const obj = new UserClass("Alice");
+
+    // Interfaces don't exist at runtime, but classes do.
+    const isClass = obj instanceof UserClass;
+
+    // TODO: Fix the expectations
+    expect(isClass).toBe(false);
+    expect(typeof UserClass).toBe("undefined"); // Hint: classes are values (functions)
   });
 });

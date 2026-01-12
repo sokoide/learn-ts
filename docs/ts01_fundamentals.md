@@ -23,7 +23,7 @@ TypeScript は強力な型推論を持っています。
 
 ```typescript
 let name = "Serena"; // string と推論される
-const age = 25;      // 25 (literal type) と推論される
+const age = 25; // 25 (literal type) と推論される
 ```
 
 これは Go の `:=` による型推論と非常に似ています。
@@ -66,7 +66,9 @@ TypeScript の `class` は、JavaScript の実体（値）を持ちつつ、同�
 
 ```typescript
 class Greeter {
-  greet() { return "Hello"; }
+  greet() {
+    return "Hello";
+  }
 }
 
 const g: Greeter = new Greeter(); // Greeterは型であり、コンストラクタでもある
@@ -84,10 +86,16 @@ Go の `struct` のようにデータ構造を定義する場合、TypeScript �
 TypeScript では、`class` であっても `interface` であっても、構造が同じなら代入可能です。これは Go の `interface` と同じ考え方です。
 
 ```typescript
-interface Point { x: number; y: number; }
+interface Point {
+  x: number;
+  y: number;
+}
 
 class PhysicsPoint {
-  constructor(public x: number, public y: number) {}
+  constructor(
+    public x: number,
+    public y: number,
+  ) {}
 }
 
 // C#やC++では不可だが、TypeScriptやGoではOK

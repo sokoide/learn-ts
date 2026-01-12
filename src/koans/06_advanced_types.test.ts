@@ -1,14 +1,14 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 
 /**
  * Koans: Advanced Types
- * 
+ *
  * Mapped Types, Conditional Types, and Template Literal Types
  * enable sophisticated type-level programming.
  */
 
-describe('06_advanced_types.test.ts', () => {
-  it('Mapped Types: basic transformation', () => {
+describe("06_advanced_types.test.ts", () => {
+  it("Mapped Types: basic transformation", () => {
     interface Flags {
       option1: boolean;
       option2: boolean;
@@ -21,14 +21,14 @@ describe('06_advanced_types.test.ts', () => {
 
     const opt: Options = {
       option1: "on",
-      option2: "off"
+      option2: "off",
     };
 
     // TODO: Fix the expectation
-    expect(typeof opt.option1).toBe('boolean');
+    expect(typeof opt.option1).toBe("boolean");
   });
 
-  it('Conditional Types: simple check', () => {
+  it("Conditional Types: simple check", () => {
     type IsNumber<T> = T extends number ? "yes" : "no";
 
     type A = IsNumber<number>;
@@ -42,7 +42,7 @@ describe('06_advanced_types.test.ts', () => {
     expect(valB).toBe("yes");
   });
 
-  it('Conditional Types: infer keyword', () => {
+  it("Conditional Types: infer keyword", () => {
     // Extracts the return type of a function
     type GetReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
 
@@ -55,10 +55,10 @@ describe('06_advanced_types.test.ts', () => {
     const val: Ret = "Hello!";
 
     // TODO: Fix the expectation
-    expect(typeof val).toBe('undefined');
+    expect(typeof val).toBe("undefined");
   });
 
-  it('Template Literal Types', () => {
+  it("Template Literal Types", () => {
     type Event = "click" | "hover";
     type CallbackName = `on${Capitalize<Event>}`; // "onClick" | "onHover"
 
@@ -66,5 +66,23 @@ describe('06_advanced_types.test.ts', () => {
 
     // TODO: Fix the expectation
     expect(cb).toBe("");
+  });
+
+  it("Branded Types (Nominal simulation)", () => {
+    type USD = number & { readonly __brand: "USD" };
+    type JPY = number & { readonly __brand: "JPY" };
+
+    const priceUSD = 10 as USD;
+    const priceJPY = 1500 as JPY;
+
+    function formatUSD(val: USD) {
+      return `$${val}`;
+    }
+
+    // formatUSD(priceJPY); // ERROR: JPY is not USD
+
+    // TODO: Fix the expectations
+    expect(formatUSD(priceUSD)).toBe("");
+    expect(typeof priceUSD).toBe("object"); // Hint: Branding is type-level only!
   });
 });

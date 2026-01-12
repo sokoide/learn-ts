@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 
 /**
  * Koans: Interfaces and Objects
@@ -12,8 +12,8 @@ import { describe, it, expect } from 'vitest';
  * - Structural typing is exactly how Go interfaces work.
  */
 
-describe('01_interfaces.test.ts', () => {
-  it('basic interface definition', () => {
+describe("01_interfaces.test.ts", () => {
+  it("basic interface definition", () => {
     interface User {
       id: number;
       name: string;
@@ -21,7 +21,7 @@ describe('01_interfaces.test.ts', () => {
 
     const alice: User = {
       id: 1,
-      name: "Alice"
+      name: "Alice",
     };
 
     expect(alice.id).toBe(1);
@@ -29,7 +29,7 @@ describe('01_interfaces.test.ts', () => {
     expect(alice.name).toBe("");
   });
 
-  it('optional properties', () => {
+  it("optional properties", () => {
     interface Book {
       title: string;
       author: string;
@@ -38,13 +38,13 @@ describe('01_interfaces.test.ts', () => {
 
     const book1: Book = {
       title: "The Hobbit",
-      author: "J.R.R. Tolkien"
+      author: "J.R.R. Tolkien",
     };
 
     const book2: Book = {
       title: "1984",
       author: "George Orwell",
-      year: 1949
+      year: 1949,
     };
 
     expect(book1.year).toBeUndefined();
@@ -52,7 +52,7 @@ describe('01_interfaces.test.ts', () => {
     expect(book2.year).toBe(0);
   });
 
-  it('structural typing (duck typing)', () => {
+  it("structural typing (duck typing)", () => {
     // TypeScript doesn't care about the name of the type, only the structure.
     interface Point {
       x: number;
@@ -71,13 +71,13 @@ describe('01_interfaces.test.ts', () => {
     expect(logPoint(obj)).toBe("");
   });
 
-  it('readonly properties', () => {
+  it("readonly properties", () => {
     interface Config {
       readonly apiKey: string;
     }
 
     const config: Config = {
-      apiKey: "secret-key"
+      apiKey: "secret-key",
     };
 
     // config.apiKey = "new-key"; // ERROR: Cannot assign to 'apiKey' because it is a read-only property.

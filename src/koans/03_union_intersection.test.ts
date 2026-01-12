@@ -1,18 +1,18 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 
 /**
  * Koans: Union and Intersection Types
- * 
+ *
  * Unions (|) allow a value to be one of several types.
  * Intersections (&) combine multiple types into one.
- * 
+ *
  * Go Comparison:
  * - Intersection is similar to struct embedding.
  * - Discriminated Unions are similar to type switching on a struct with a 'type' field.
  */
 
-describe('03_union_intersection.test.ts', () => {
-  it('union types basics', () => {
+describe("03_union_intersection.test.ts", () => {
+  it("union types basics", () => {
     function format(value: string | number) {
       if (typeof value === "string") {
         return value.toUpperCase();
@@ -25,7 +25,7 @@ describe('03_union_intersection.test.ts', () => {
     expect(format(3.14159)).toBe("");
   });
 
-  it('intersection types basics', () => {
+  it("intersection types basics", () => {
     interface Serializable {
       serialize(): string;
     }
@@ -38,14 +38,14 @@ describe('03_union_intersection.test.ts', () => {
 
     const obj: Persistent = {
       serialize: () => "data",
-      log: () => console.log("logging")
+      log: () => console.log("logging"),
     };
 
     // TODO: Fix the expectation
     expect(obj.serialize()).toBe("");
   });
 
-  it('discriminated unions', () => {
+  it("discriminated unions", () => {
     interface Success {
       status: "success"; // Discriminant
       data: string;
@@ -71,8 +71,12 @@ describe('03_union_intersection.test.ts', () => {
   });
 
   it('type guards with "in" operator', () => {
-    interface Fish { swim: () => string }
-    interface Bird { fly: () => string }
+    interface Fish {
+      swim: () => string;
+    }
+    interface Bird {
+      fly: () => string;
+    }
 
     function move(animal: Fish | Bird) {
       if ("swim" in animal) {

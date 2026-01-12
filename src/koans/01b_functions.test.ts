@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 
 /**
  * Koans: Functions
@@ -12,8 +12,8 @@ import { describe, it, expect } from 'vitest';
  * - TypeScript supports optional parameters via '?', which Go does not support directly.
  */
 
-describe('01_functions.test.ts', () => {
-  it('named functions and types', () => {
+describe("01_functions.test.ts", () => {
+  it("named functions and types", () => {
     function add(a: number, b: number): number {
       return a + b;
     }
@@ -22,14 +22,14 @@ describe('01_functions.test.ts', () => {
     expect(add(10, 5)).toBe(0);
   });
 
-  it('arrow functions', () => {
+  it("arrow functions", () => {
     const multiply = (a: number, b: number): number => a * b;
 
     // TODO: Fix the expectation
     expect(multiply(3, 4)).toBe(0);
   });
 
-  it('optional parameters', () => {
+  it("optional parameters", () => {
     // The '?' makes the parameter optional.
     function greet(name: string, title?: string): string {
       if (title) {
@@ -43,7 +43,7 @@ describe('01_functions.test.ts', () => {
     expect(greet("Bob")).toBe("");
   });
 
-  it('default parameters', () => {
+  it("default parameters", () => {
     function power(base: number, exponent: number = 2): number {
       return Math.pow(base, exponent);
     }
@@ -53,7 +53,7 @@ describe('01_functions.test.ts', () => {
     expect(power(4)).toBe(0);
   });
 
-  it('rest parameters', () => {
+  it("rest parameters", () => {
     // Similar to variadic functions in Go (args ...int).
     function sum(...numbers: number[]): number {
       return numbers.reduce((total, n) => total + n, 0);

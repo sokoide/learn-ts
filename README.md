@@ -5,13 +5,13 @@
 ## 学習の進め方
 
 1. **ドキュメントを読む**: `docs/` 配下のドキュメントを順番に読みます。
-    - `ts01_fundamentals.md`: 基礎
-    - `ts02_generics.md`: Generics
-    - `ts03_union_intersection.md`: Union/Intersection Types
-    - `ts04_async.md`: Async Programming
-    - `ts05_utilities.md`: Utility Types
-    - `ts06_advanced_types.md`: Advanced Types
-    - `ts07_advanced_classes.md`: Advanced Classes
+   - `ts01_fundamentals.md`: 基礎
+   - `ts02_generics.md`: Generics
+   - `ts03_union_intersection.md`: Union/Intersection Types
+   - `ts04_async.md`: Async Programming
+   - `ts05_utilities.md`: Utility Types
+   - `ts06_advanced_types.md`: Advanced Types
+   - `ts07_advanced_classes.md`: Advanced Classes
 2. **テスト（Koans）を確認する**: `src/koans/` 配下にあるテストファイル（例: `01_variables.test.ts`）を開きます。
 3. **テストを修正する**: テストファイル内の `TODO` コメントや、明らかに間違っている期待値（`expect(...).toBe(0)` など）を、ドキュメントの知識を元に修正します。
 4. **テストを実行してパスさせる**: 修正後、ターミナルでテストを実行し、すべてのテストがパス（Green）になることを目指します。
